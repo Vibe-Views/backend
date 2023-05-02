@@ -86,6 +86,29 @@ class User {
   isValidPassword = async (password) => (
     authUtils.isValidPassword(password, this.#passwordHash)
   );
+
+  createPost = async (post_id, img_url) => {
+    try {
+      const query = `INSERT INTO posts (post_id, img_url)
+        VALUES (?, ?) RETURNING *`;
+      const { rows: [post] } = await knex.raw(query, [post_id, img_url]);
+      return post;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
+  createComment = async (user_id, comment_text, post_id) => {
+    try {
+      const query = `INSERT INTO comments (user_id, comment_text, post_id)
+        VALUES (?, ?) RETURNING *`;
+      const { rows: [comment] } = await knex.raw(query, [user_id, comment_text, post_id]);
+      return comment
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
 }
 
 module.exports = User;
