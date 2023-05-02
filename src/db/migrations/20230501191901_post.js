@@ -4,9 +4,8 @@
  */
 exports.up = (knex) => knex.schema.createTable('posts', (table) => {
     table.increments('id');
-    table.integer('post_id').notNullable()
-    table.VARCHAR('img_url').notNullable
-    table.text('created_at').notNullable
+    table.integer('user_id').references('id').inTable('users')
+    table.string('img').notNullable()
     table.timestamps(true, true);
   });
 
