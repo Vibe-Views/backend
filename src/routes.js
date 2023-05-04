@@ -32,7 +32,7 @@ Router.get('/logged-in-secret', checkAuthentication, (req, res) => {
 // Router.post('users/posts', userController.post)
 // Router.post('user/comments', userController.comment)
 Router.get('/posts', postController.list)
-// Router.post('/posts', postController.create)
+Router.post('/posts', postController.create)
 
 
 // ---------COMMENTS------------

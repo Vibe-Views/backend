@@ -17,6 +17,15 @@ class Post {
           return null;
         }
     }
+
+    static async create(user_id, img) {
+      try {
+        const query = 'INSERT INTO post FROM post'
+      } catch (err) {
+        console.error(err);
+        return null;
+      }
+    }
 }
 
 module.exports = Post
