@@ -8,16 +8,18 @@ class Post {
         this.comment_text = comment_text
     }
 
-    static async deleted( post_id ) {
-        try {
-          return knex.raw('DELETE FROM post WHERE post_id = ?');
-        } catch (err) {
-          console.error(err);
-          return null;
-        }
+    static async delete (id)  {
+      try {
+        const query = `DELETE FROM posts WHERE id = ?`;
+        const { rows: [post] } = await knex.raw(query, [id]);
+        return post;
+      } catch (err) {
+        console.error(err);
+        return null;
       }
+    }
 
-    static async list( ) {
+    static async list() {
         try {
           const query = 'SELECT * FROM posts';
           const { rows } = await knex.raw(query);

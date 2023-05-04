@@ -35,6 +35,10 @@ Router.get('/posts', postController.list)
 Router.post('/posts', postController.create)
 
 
+Router.delete('/posts', postController.deleted)
+
+
+
 
 // Router.delete('/posts/:id', postController.deletePost)
 

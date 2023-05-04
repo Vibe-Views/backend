@@ -9,4 +9,4 @@ const createPost = async (req, res) => {
     res.send(user);
 }
 
-module.exports = createPost;
+module.exports = createPost;    
