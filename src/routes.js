@@ -40,10 +40,9 @@ Router.post('/posts', postController.create)
 
 // ---------COMMENTS------------
 
-
-
-
-
+Router.post('/comments', commentController.create);
+Router.patch('/comments', commentController.patch);
+Router.delete('/comments', commentController.delete);
 
 
 module.exports = Router;
