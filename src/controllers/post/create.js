@@ -1,10 +1,10 @@
 const createPost = async (req, res) => {
     const {
         session,
-        db: { User },
+        db: { Post },
         body: {user_id, img}
     } = req
-    const create = await post.create(user_id, img)
+    const user = await post.create(user_id, img)
     session.userId = user.id
     res.send(create)
 
