@@ -6,7 +6,12 @@ class Post {
         this.user_id = user_id
         this.img = img 
     }
-    
+    static async create() {
+        const query = 'INSERT '
+    }
+
+
+
     static async list() {
         try {
           const query = 'SELECT * FROM posts';
