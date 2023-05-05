@@ -9,7 +9,7 @@ module.exports = {
       port: process.env.PG_PORT || 5432,
       user: process.env.PG_USER || 'postgres',
       password: process.env.PG_PASS || 'postgres',
-      database: process.env.PG_DB || 'Vibe_views',
+      database: process.env.PG_DB || 'vibe_view1',
     },
     migrations: {
       directory: path.join(__dirname, 'src', 'db', 'migrations'),
