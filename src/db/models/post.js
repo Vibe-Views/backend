@@ -7,10 +7,12 @@ class Post {
         this.img = img 
         this.comment_text = comment_text
     }
+    
 
     static async delete (id)  {
       try {
-        const query = `DELETE FROM posts WHERE id = ?`;
+        await knex.raw(`DELETE FROM comments WHERE id = ?`, [id])
+        const query = `DELETE FROM posts WHERE id = ? RETURNING *`;
         const { rows: [post] } = await knex.raw(query, [id]);
         return post;
       } catch (err) {
