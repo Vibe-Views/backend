@@ -31,8 +31,9 @@ Router.get('/logged-in-secret', checkAuthentication, (req, res) => {
 // ---------POSTS------------
 // Router.post('users/posts', userController.post)
 // Router.post('user/comments', userController.comment)
-Router.get('/posts', postController.list)
 Router.post('/posts', postController.create)
+Router.get('/posts', postController.list)
+Router.patch('/posts/:id', postController.update);
 
 
 
@@ -40,8 +41,8 @@ Router.post('/posts', postController.create)
 
 // ---------COMMENTS------------
 
-Router.post('/comments', commentController.create);
-Router.patch('/comments', commentController.patch);
-Router.delete('/comments', commentController.delete);
+// Router.post('/comments', commentController.create);
+// Router.patch('/comments', commentController.patch);
+// Router.delete('/comments', commentController.delete);
 
 module.exports = Router;

@@ -13,7 +13,7 @@ const main = async () => {
   document.querySelector('#create-form')
     .addEventListener('submit', async (event) => {
       event.preventDefault();
-      signupAndLoginHandler('users', event.target);
+      signupAndLoginHandler('/api/users', event.target);
     });
 };
 

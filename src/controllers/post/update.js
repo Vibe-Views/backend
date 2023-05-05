@@ -1,4 +1,5 @@
-const updatePost= async (req, res) => {
+const updatePost = async (req, res) => {
+  debugger
   const {
     db: { Post },
     params: { id },
