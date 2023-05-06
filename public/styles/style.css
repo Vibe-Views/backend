@@ -22,3 +22,33 @@ nav ul li:first-child {
   text-align: center;
   border: black 1px dashed;
 }
+
+
+#postForm{
+  padding-top: 20px;
+}
+
+#post-container{
+  display: flex;
+  justify-content: space-around;
+}
+
+.circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: gray;
+  background-size: cover;
+}
+
+.post {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#update-button{
+  margin-top: 15px;
+  margin-left: 10px;
+}
+

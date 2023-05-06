@@ -33,7 +33,6 @@ class Post {
     }
 
     static async find(id) {
-      console.log(id)
       try {
         const query = 'SELECT * FROM posts WHERE id = ?';
         const { rows: [post] } = await knex.raw(query, [id]);
@@ -44,10 +43,10 @@ class Post {
       }
     }
 
-    static async list() {
+    static async listMyPost(userId) {
         try {
-          const query = 'SELECT * FROM posts';
-          const { rows } = await knex.raw(query);
+          const query = 'SELECT * FROM posts WHERE user_id = ?';
+          const { rows } = await knex.raw(query, [userId]);
           return rows.map((post) => new Post(post));
         } catch (err) {
           console.error(err);
