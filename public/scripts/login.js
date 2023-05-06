@@ -15,6 +15,7 @@ const main = async () => {
       event.preventDefault();
       signupAndLoginHandler('/users/login', event.target);
     });
+
 };
 
 main();

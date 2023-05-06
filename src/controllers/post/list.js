@@ -1,7 +1,9 @@
 const list = async (req, res) => {
-    const { Post } = req.db 
-    const posts = await Post.list()
-    res.send(posts)
+    const { session, db: {Post} } = req;
+    console.log(session)
+    const userId = session.userId;
+    const posts = await Post.listMyPost(userId);
+    posts ? res.send(posts) : null;
 }
 
 module.exports = list

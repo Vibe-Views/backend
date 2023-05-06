@@ -1,18 +1,13 @@
-const updatePost= async (req, res) => {
+async function update (req, res){
   const {
     db: { Post },
     params: { id },
-    body: { caption_text, img },
+    body: { caption_text },
   } = req;
-
   const post = await Post.find(id);
   if (!post) return res.sendStatus(404);
-
-  const updatedPost = await post.update(caption_text, img);
-  res.send(updatedPost);
-
+  const updatedPost = await post.updateCaption(caption_text);
   if (!updatedPost) return res.sendStatus(404);
   res.send(updatedPost);
 };
-
-module.exports = updatePost;
+module.exports = update;

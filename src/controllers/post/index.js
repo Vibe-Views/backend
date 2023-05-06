@@ -6,6 +6,6 @@ const update = require('./update')
 module.exports = {
     list,
     create,
-    update,
-    deleted
+    deleted,
+    update
 }

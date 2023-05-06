@@ -1,6 +1,7 @@
 const express = require('express');
 const userController = require('./controllers/user');
-const postController = require('./controllers/post')
+const postController = require('./controllers/post');
+const commentController = require('./controllers/comment');
 const addModels = require('./middleware/add-models');
 const checkAuthentication = require('./middleware/check-authentication');
 
@@ -31,17 +32,28 @@ Router.get('/logged-in-secret', checkAuthentication, (req, res) => {
 // ---------POSTS------------
 // Router.post('users/posts', userController.post)
 // Router.post('user/comments', userController.comment)
+// Router.patch('/posts/:id', postController.update)
+
 Router.get('/posts', postController.list)
 Router.post('/posts', postController.create)
+Router.delete('/posts', postController.deleted)
+
+
+
+Router.patch('/posts/:id', postController.update)
+
+
 
 
 
 // Router.delete('/posts/:id', postController.deletePost)
 
 // ---------COMMENTS------------
-
 Router.post('/comments', commentController.create);
-Router.patch('/comments', commentController.patch);
-Router.delete('/comments', commentController.delete);
+Router.delete('/comments', commentController.deleted);
+
+
+
+
 
 module.exports = Router;
