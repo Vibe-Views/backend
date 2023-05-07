@@ -45,18 +45,56 @@ const main = async () => {
   const urlElement = document.querySelector('#url');
   const captionElement = document.querySelector('#caption');
 
+
+
+  const createCommentButton = () => {
+    const button = document.createElement('button');
+    button.innerText = 'View Comments';
+    return button;
+  };
+
+  const createDeleteButton = () => {
+    const button = document.createElement('button');
+    button.innerText = 'Delete Post';
+    // button.addEventListener('click', deletePost);
+    return button;
+  };
+  
+  const createUpdatePostButton = () => {
+  const button = document.createElement('button');
+  button.innerText = 'Update post';
+  // button.addEventListener('click', updatePost);
+  return button;
+};
+  
+  // const deletePost = (event) => {
+  //   const postDiv = event.target.parentElement;
+  //   postDiv.remove();
+  // };
+
+
+
+
   const displayPost = (post) => {
     const div = document.createElement('div');
     const img = document.createElement('img');
     const caption = document.createElement('p');
+    const commentButton = createCommentButton();
+    const deleteButton = createDeleteButton();
+    const updatePostButton = createUpdatePostButton();
     div.setAttribute('data-post-id', post.id);
     img.src= post.img;
     caption.innerText = post.caption_text;
-    div.append(img, caption);
+    div.append(img, caption, commentButton, updatePostButton, deleteButton);
     postContainer.append(div);
+   
 
     img.style.width = '300px';
+    img.style.height = '250px';
     img.style.paddingTop = '25px';
+    modal.style.display = "none"
+  
+
 
   }
 
@@ -73,20 +111,32 @@ const main = async () => {
     e.preventDefault();
     const url = urlElement.value;
     const caption = captionElement.value;
-    console.log(url, caption)
+    // console.log(url, caption)
     const [res, _err] = await handleFetch('/posts', getFetchOptions({ url, caption}));
-    console.log(res, _err)
+    // console.log(res, _err)
     displayPost(res);
   });
 
-  // let viewComments = document.querySelector('#view-comments-btn')
 
-  // viewComments.addEventListener('click', commentHelper)
 
-  // function commentHelper(){
-    
-  // }
+  // Creates the modal and closes it
+  const modal = document.getElementById("modal");
+  const btn = document.getElementById("open-modal-btn");
+  const span = document.getElementById("submit-btn")[0];
 
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  span.addEventListener('click', closed) 
+    function closed() {
+      modal.style.display = "none"
+    }
 
 };
 
