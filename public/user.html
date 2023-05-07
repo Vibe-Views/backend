@@ -12,8 +12,8 @@
   <nav id="main-nav"></nav>
   <main>
 
-    <div class="circle"></div>
-    <button id = "update-button">Update profile picture</button>
+    <!-- <div class="circle"></div> -->
+    <!-- <button id = "update-button">Update profile picture</button> -->
 
     <h1 id="username"></h1>
 
@@ -23,24 +23,49 @@
       <input type="text" name="username" id="username-input">
       <button type="submit">Update Username</button>
     </form>
-
-    
-
     <form id="logout-form" aria-label="logout">
       <button type="submit">Log Out</button>
     </form>
-    <form id="postForm">
+
+
+    <button id="open-modal-btn">Create Post</button>
+
+    <!-- <form id="postForm">
       <label for="">Url</label>
       <input type="text" id="url">
       <label for="">Caption</label>
       <input type="text" id="caption">
       <button>Post</button>
-    </form>
+    </form> -->
 
     <div id="post-container"></div>
+  
     <!-- <p id="caption">Caption Text Here</p> -->
 <!-- <button id="view-comments-btn">View Comments</button> -->
 
+
+<!-- <button id="open-modal-btn">Create Post</button> -->
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <form id = "postForm">
+      <label for="">URL:</label>
+      <input type="text" id="url">
+      <br>
+      <label for=>Caption:</label>
+      <input type="text" id="caption">
+      <br>
+      <button type="submit" id="submit-btn">Post</button>
+    </form>
+  </div>
+</div>
+
+
   </main>
+
+  
+
+
+  
 </body>
 </html>
