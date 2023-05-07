@@ -1,19 +1,19 @@
 /* eslint-disable import/extensions */
-import {
-  fetchLoggedInUser,
-  handleFetch,
-  setNav,
-} from './global.js';
+// import {
+//   fetchLoggedInUser,
+//   handleFetch,
+//   setNav,
+// } from './global.js';
 
-const main = async () => {
-  const user = await fetchLoggedInUser();
-  setNav(!!user);
+// const main = async () => {
+//   const user = await fetchLoggedInUser();
+//   setNav(!!user);
 
-  const [secret, _err] = await handleFetch('/logged-in-secret');
-  console.log('secret, _err:', secret, _err);
-  if (secret) {
-    document.querySelector('#secret-message').textContent = secret.msg;
-  }
+//   const [secret, _err] = await handleFetch('/logged-in-secret');
+//   console.log('secret, _err:', secret, _err);
+//   if (secret) {
+//     document.querySelector('#secret-message').textContent = secret.msg;
+//   }
 
   // const postContainer = document.querySelector('#post-container');
   // const formElement = document.querySelector('#postForm');
@@ -39,6 +39,25 @@ const main = async () => {
   //   console.log(res, _err)
   //   displayPost(res);
   // });
-};
+// };
 
-main();
+// main();
+
+import {
+  fetchLoggedInUser,
+  getFetchOptions,
+  handleFetch,
+  setNav,
+} from "./global.js";
+
+const redirectToLogin = () => window.location.assign("/login.html"); //go to log in page
+
+const main = async () => {
+  const user = await fetchLoggedInUser(); //gets the user information (rly just the user_id if there is a logged in user)
+  if (!user) return redirectToLogin(); // if theres no user, redirect them to login (code above)
+  setNav(!!user); //if there is a user, give them the logged in user nav bar(as opposed to no user nav bar (it has different links))
+
+  //the code you wanna write (handle fetches, more dom, whatever)
+}
+
+main()
