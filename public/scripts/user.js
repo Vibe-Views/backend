@@ -53,22 +53,62 @@ const main = async () => {
     return button;
   };
 
+  
+
   const createDeleteButton = () => {
     const button = document.createElement('button');
     button.innerText = 'Delete Post';
-    // button.addEventListener('click', deletePost);
+    button.addEventListener('click', deletePost);
     return button;
   };
+
   
+
+
+
+  function deletePost() {
+    const postId = this.id;
+    const options = {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' }
+    };
+    fetch(`/posts/${postId}`, options)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to delete post');
+      }
+      this.parentNode.remove();
+    })
+    .catch(error => {
+      console.error(error);
+      alert('Failed to delete post');
+    });
+  }
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
   const createUpdatePostButton = () => {
   const button = document.createElement('button');
   button.innerText = 'Update post';
   // button.addEventListener('click', updatePost);
   return button;
 };
+
+
   
   // const deletePost = (event) => {
-  //   const postDiv = event.target.parentElement;
+    // const postDiv = event.target.parentElement;
   //   postDiv.remove();
   // };
 
@@ -113,7 +153,7 @@ const main = async () => {
     const caption = captionElement.value;
     // console.log(url, caption)
     const [res, _err] = await handleFetch('/posts', getFetchOptions({ url, caption}));
-    // console.log(res, _err)
+    console.log(res, _err)
     displayPost(res);
   });
 
@@ -125,6 +165,8 @@ const main = async () => {
   const span = document.getElementById("submit-btn")[0];
 
   btn.onclick = function() {
+    urlElement.value = null
+   captionElement.value = null
     modal.style.display = "block";
   }
 
@@ -134,9 +176,11 @@ const main = async () => {
     }
   }
   span.addEventListener('click', closed) 
-    function closed() {
-      modal.style.display = "none"
-    }
+  
+  function closed(){
+    
+  }
+   
 
 };
 

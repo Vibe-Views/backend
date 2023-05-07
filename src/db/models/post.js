@@ -22,7 +22,7 @@ class Post {
 
     static async delete (id)  {
       try {
-        await knex.raw(`DELETE FROM comments WHERE id = ?`, [id])
+        // await knex.raw(`DELETE FROM comments WHERE id = ?`, [id])
         const query = `DELETE FROM posts WHERE id = ? RETURNING *`;
         const { rows: [post] } = await knex.raw(query, [id]);
         return post;
