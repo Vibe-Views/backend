@@ -60,7 +60,6 @@ const logOutHandler = async () => {
 // Nav Helper
 const setNav = (hasLoggedInUser) => {
   const loggedOutNavHtml = `<ul>
-    <li><a href="/">Home</a></li>
     <li><a href="./create.html">Sign Up</a></li>
     <li><a href="./login.html">Login</a></li>
   </ul>`;

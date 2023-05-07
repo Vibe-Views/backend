@@ -50,6 +50,7 @@ import {
   setNav,
 } from "./global.js";
 
+const logoutForm = document.querySelector('#logout-form');
 const redirectToLogin = () => window.location.assign("/login.html"); //go to log in page
 
 const main = async () => {
@@ -59,5 +60,9 @@ const main = async () => {
 
   //the code you wanna write (handle fetches, more dom, whatever)
 }
+logoutForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  logOutHandler();
+});
 
 main()
