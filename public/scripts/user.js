@@ -196,19 +196,12 @@ const main = async () => {
       modal.style.display = "none";
     }
   }
-<<<<<<< HEAD
   span.addEventListener('click', closed) 
   
   function closed(){
     
   }
    
-=======
-  // span.addEventListener('click', closed) 
-    function closed() {
-      modal.style.display = "none"
-    }
->>>>>>> ivon-branch
 
 };
 
