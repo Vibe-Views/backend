@@ -73,6 +73,18 @@ const setNav = (hasLoggedInUser) => {
   document.querySelector('nav').innerHTML = navHtml;
 };
 
+// ------------- update cap.  ---------------
+
+const updatePostHandler = async (userInput, postId) => {
+
+  const url = `/api/posts/${postId}`;
+  const options = getFetchOptions({ userInput }, 'PATCH');
+
+  const [response, err] = await handleFetch(url, options);
+  
+  return [response, err];
+};
+
 // This is wonky. Once you learn about bundlers we won't have to
 // explicitly create globals. We just lack the tools right now.
 Object.assign(window, {
@@ -93,4 +105,5 @@ export {
   setNav,
   logOutHandler,
   updateUsernameHandler,
+  updatePostHandler
 };

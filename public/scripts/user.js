@@ -4,6 +4,7 @@ import {
   logOutHandler,
   updateUsernameHandler,
   setNav,
+  updatePostHandler
 } from './global.js';
 
 const isAuthError = (err) => (err.status === 401 || err.status === 403);
@@ -63,10 +64,30 @@ const main = async () => {
   const createUpdatePostButton = () => {
   const button = document.createElement('button');
   button.innerText = 'Update post';
-  // button.addEventListener('click', updatePost);
+  button.addEventListener('click', e => {
+  // console.log(e.target.parentElement.getAttribute('data-post-id'))
+  const parent = e.target.parentElement
+  const userUpdateForm = document.createElement('input');
+  const userUpdateSubmit = document.createElement('button');
+  userUpdateSubmit.innerText = 'Update';
+
+  userUpdateSubmit.addEventListener('click', async e => {
+    const userInput = e.target.parentElement.getElementsByTagName('input')[0].value
+    const targetPost = Number(e.target.parentElement.getAttribute('data-post-id'))
+    console.log(userInput, targetPost)
+    await updatePostHandler(userInput, targetPost)
+    // window.location.assign('/user.html')
+  })
+
+    if (e.target.parentElement.contains(userUpdateForm) === false ) {
+    parent.append(userUpdateForm, userUpdateSubmit);
+  }
+  console.log(e.target.parentElement.contains(userUpdateForm))
+  });
   return button;
 };
   
+
   // const deletePost = (event) => {
   //   const postDiv = event.target.parentElement;
   //   postDiv.remove();
@@ -133,7 +154,7 @@ const main = async () => {
       modal.style.display = "none";
     }
   }
-  span.addEventListener('click', closed) 
+  // span.addEventListener('click', closed) 
     function closed() {
       modal.style.display = "none"
     }

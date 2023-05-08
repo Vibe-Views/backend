@@ -116,3 +116,125 @@ nav ul li:first-child {
   cursor: pointer;
 }
 
+/* -------------------------------------------------------- */
+
+#logo {
+  height: auto;
+  width: 15%;
+  margin-top: 4%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav {
+  display: none;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  color: whitesmoke;
+  margin: 0% 10% 0% 10%;
+}
+
+#log-in{
+  color: whitesmoke;
+}
+
+#create-form{
+  color: whitesmoke
+}
+
+a{
+  color:  whitesmoke;
+}
+
+main {
+  margin: 0% 10% 0% 10%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+ /* .box {
+  border: 1px solid whitesmoke;
+  padding: 40px;
+  max-width: 90%;
+  margin: 0 auto;
+} */
+
+.box-signup {
+  border: 1px solid whitesmoke;
+  padding: 40px;
+  width: 39%;
+  margin: 0 auto;
+}
+
+.box-login {
+  border: 1px solid whitesmoke;
+  padding: 40px;
+  width: 45%;
+  margin: 0 auto;
+}
+
+/* .sign-in {
+  width: 100%;
+} */
+
+.field {
+  margin-bottom: 20px;
+}
+.label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.input {
+  padding: 10px;
+  border: 1px solid whitesmoke;
+  border-radius: 3px;
+  width: 100%;
+}
+#button {
+  background-color: #3273DC;
+  color: whitesmoke;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#logOutButton:hover {
+  background-color: #2765C5;
+}
+#pLogOut{
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+#sign-up {
+  text-align: center;
+}
+
+#post-container{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1 fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-row-gap: 20px;
+  padding-left: 30px;
+  /* justify-content: space-evenly;
+  align-content: space-evenly; */
+}
+
+/* .post {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+} */
+
