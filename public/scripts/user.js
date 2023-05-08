@@ -88,16 +88,6 @@ const main = async () => {
   }
   
 
-  
-  
-
-
-
-
-
-
-
-
 
   const createUpdatePostButton = () => {
   const button = document.createElement('button');
