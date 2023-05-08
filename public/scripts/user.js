@@ -58,43 +58,9 @@ const main = async () => {
   const createDeleteButton = () => {
     const button = document.createElement('button');
     button.innerText = 'Delete Post';
-    button.addEventListener('click', deletePost);
+    // button.addEventListener('click', deletePost);
     return button;
   };
-
-  
-
-
-
-  function deletePost() {
-    const postId = this.id;
-    const options = {
-      method: 'DELETE',
-      credentials: 'include',
-      headers: { 'Content-Type': 'application/json' }
-    };
-    fetch(`/posts/${postId}`, options)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to delete post');
-      }
-      this.parentNode.remove();
-    })
-    .catch(error => {
-      console.error(error);
-      alert('Failed to delete post');
-    });
-  }
-  
-
-  
-  
-
-
-
-
-
-
 
 
 
@@ -104,15 +70,6 @@ const main = async () => {
   // button.addEventListener('click', updatePost);
   return button;
 };
-
-
-  
-  // const deletePost = (event) => {
-    // const postDiv = event.target.parentElement;
-  //   postDiv.remove();
-  // };
-
-
 
 
   const displayPost = (post) => {
@@ -133,10 +90,124 @@ const main = async () => {
     img.style.height = '250px';
     img.style.paddingTop = '25px';
     modal.style.display = "none"
-  
+
+    deleteButton.addEventListener('click', deletePost);
+    commentButton.addEventListener('click', postComment)
 
 
   }
+
+  function displayComments(text, comment){
+    const list = document.createElement('li')
+    list.innerText = text
+    comment.append(list)
+  }
+
+  async function postComment(event) {
+  const modal = document.getElementById("modal123");
+  const span = document.getElementById("submit-btn123")[0];
+  const post_button = document.querySelector("#post-comment")
+  const comment = document.querySelector('#view-comments')
+  const postId = event.target.parentNode.dataset.postId;
+  modal.setAttribute('data-post-id', postId)
+  // modal.dataset = postId
+  
+  const comments = await viewPost(event)
+  console.log(comments)
+
+  modal.style.display = "block"
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  // span.addEventListener('click', closed) 
+  // function closed(){
+    
+  // }
+  
+  comments.forEach( text => {
+    displayComments(text.comment_text, comment)
+    // const list = document.createElement('li')
+    // list.innerText = text.comment_text
+    // comment.append(list)
+  })
+
+  post_button.addEventListener('click', postButton)
+
+
+  }
+
+const postButton = async (event) => {
+  const commentElement = document.querySelector('#view-comments')
+  const comment = document.querySelector('#caption123')
+  const postId = event.target.parentNode.parentNode.parentNode.attributes[2].value
+  
+  console.log(event)
+  
+    const options = {
+      method: 'POST',
+      credentials: 'include',
+      body: JSON.stringify({comment_text:comment.value, post_id:postId}),
+      headers: { 'Content-Type': 'application/json' }
+    };
+    
+    const response = await fetch(`/comments`, options);
+    const data = await response.json()
+    if (!response.ok) {
+      console.error('Failed to make post');
+      alert('Failed to post');
+      return;
+    }
+    displayComments(data.comment_text, commentElement)
+    comment.value = null;
+    
+    
+}
+
+
+
+
+
+
+
+  const viewPost = async (event) => {
+    const postId = event.target.parentNode.dataset.postId;
+    const options = {
+      method: 'GET',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' }
+    };
+    const response = await fetch(`/comments/${postId}`, options);
+  
+    if (!response.ok) {
+      console.error('Failed to delete post');
+      alert('Failed to delete post');
+      return;
+    }
+    const data = await response.json()
+    return data
+  
+  };
+
+
+  const deletePost = async (event) => {
+    const postId = event.target.parentNode.dataset.postId;
+    const options = {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' }
+    };
+    const response = await fetch(`/posts/${postId}`, options);
+  
+    if (!response.ok) {
+      console.error('Failed to delete post');
+      alert('Failed to delete post');
+      return;
+    }
+    event.target.parentNode.remove();
+  };
+
 
   const getPosts = async () => {
     const options = { method: 'GET', credentials: 'include', headers: { 'Content-Type': 'application/json' }};
@@ -156,8 +227,6 @@ const main = async () => {
     console.log(res, _err)
     displayPost(res);
   });
-
-
 
   // Creates the modal and closes it
   const modal = document.getElementById("modal");
@@ -180,8 +249,6 @@ const main = async () => {
   function closed(){
     
   }
-   
-
 };
 
 main();

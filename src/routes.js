@@ -36,7 +36,7 @@ Router.get('/logged-in-secret', checkAuthentication, (req, res) => {
 
 Router.get('/posts', postController.list)
 Router.post('/posts', postController.create)
-Router.delete('/posts', postController.deleted)
+Router.delete('/posts/:id', postController.deleted)
 Router.patch('/posts/:id', postController.update)
 
 
@@ -48,7 +48,7 @@ Router.patch('/posts/:id', postController.update)
 // ---------COMMENTS------------
 Router.post('/comments', commentController.create);
 Router.delete('/comments', commentController.deleted);
-
+Router.get('/Comments/:post_id',  commentController.list)
 
 
 
