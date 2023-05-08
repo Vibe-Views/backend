@@ -60,7 +60,6 @@ const logOutHandler = async () => {
 // Nav Helper
 const setNav = (hasLoggedInUser) => {
   const loggedOutNavHtml = `<ul>
-    <li><a href="/">Home</a></li>
     <li><a href="./create.html">Sign Up</a></li>
     <li><a href="./login.html">Login</a></li>
   </ul>`;
@@ -72,6 +71,18 @@ const setNav = (hasLoggedInUser) => {
 
   const navHtml = hasLoggedInUser ? loggedInNavHtml : loggedOutNavHtml;
   document.querySelector('nav').innerHTML = navHtml;
+};
+
+// ------------- update cap.  ---------------
+
+const updatePostHandler = async (userInput, postId) => {
+
+  const url = `/api/posts/${postId}`;
+  const options = getFetchOptions({ userInput }, 'PATCH');
+
+  const [response, err] = await handleFetch(url, options);
+  
+  return [response, err];
 };
 
 // This is wonky. Once you learn about bundlers we won't have to
@@ -94,4 +105,5 @@ export {
   setNav,
   logOutHandler,
   updateUsernameHandler,
+  updatePostHandler
 };

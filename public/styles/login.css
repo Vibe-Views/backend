@@ -2,9 +2,8 @@
     background-color: black;
 } */
 
-
  nav {
-    height: 2rem;
+    height: 10rem;
   }
    /* nav ul {
     list-style: none;
@@ -17,5 +16,4 @@
     nav ul li {
     flex-grow: 1;
     display: flex;
-    
   }
