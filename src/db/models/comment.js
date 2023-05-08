@@ -26,12 +26,26 @@ class Comment {
       const query = `INSERT INTO comments (user_id, comment_text, post_id)
         VALUES (?, ?, ?) RETURNING *`;
       const { rows: [comment] } = await knex.raw(query, [user_id, comment_text, post_id]);
+
       return comment ? new Comment(comment) : null;
     } catch (err) {
       console.error(err);
       return null;
     }
   }
+
+  static async listComment (post_id) {
+    try {
+      const query = `SELECT * FROM comments WHERE post_id = ?;`;
+      const { rows} = await knex.raw(query, [post_id]);
+      return rows;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
+
+
 }  
 
 

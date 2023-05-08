@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/user.css">
   <script type="module" src="./scripts/user.js"></script>
   <title>User</title>
 </head>
@@ -48,16 +48,34 @@
 <div id="modal" class="modal">
   <div class="modal-content">
     <form id = "postForm">
-      <label for="">URL:</label>
+      <label id = "url-text" for="">URL:</label>
       <input type="text" id="url">
       <br>
-      <label for=>Caption:</label>
+      <label id= "caption-text" for=>Caption:</label>
       <input type="text" id="caption">
       <br>
       <button type="submit" id="submit-btn">Post</button>
     </form>
   </div>
 </div>
+
+
+<div id="modal123" class="modal">
+  <div class="modal-content">
+    <div id = "view-comments"></div>
+    <form id = "postForm123">
+      <br>
+      <label id = "comment-text" for=>Comment:</label>
+      <input type="text" id="caption123">
+      <button type = "button" id = "post-comment">post</button>
+      <br>
+      <button type="submit" id="submit-btn123">Close</button>
+    </form>
+  </div>
+</div>
+
+
+
 
   </main>
 
